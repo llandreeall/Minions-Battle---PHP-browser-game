@@ -1,0 +1,67 @@
+.container-fluid {
+    background-color: #363062;
+}
+
+@keyframes mymove {
+  from {left: -2px;}
+  to {left: 2px;}
+}
+
+@keyframes mymove2 {
+  from {left: 2px;}
+  to {left: -2px;}
+}
+
+#logo_image {
+    padding-top: 100px;
+}
+
+#tim_image {
+    margin-top: 95px;
+    width: 60%;
+    position: relative;
+    animation: mymove 0.5s infinite;
+}
+
+#evil_image {
+    padding-bottom: 50px;
+    position: relative;
+    animation: mymove2 0.5s infinite;
+}
+
+.start_button {
+    height: 100px;
+    width: 50%;
+    align-self: center;
+    text-align: justify-all;
+    font-weight: 600;
+    font-size: 30px;
+    border-radius: 100px;
+    background-color: #f9d769;
+    padding: 25px;
+    font-family: sans-serif;
+    color: #363062;
+}
+
+.start_button:hover {
+    background-color: #edb42f;
+}
+    
+.history_button {
+    margin-top: 30px;
+    height: 100px;
+    width: 50%;
+    align-self: center;
+    text-align: justify-all;
+    font-weight: 600;
+    font-size: 30px;
+    border-radius: 100px;
+    background-color: #f9d769;
+    padding: 25px;
+    font-family: sans-serif;
+    color: #363062;
+}
+
+.history_button:hover {
+    background-color: #edb42f;
+}

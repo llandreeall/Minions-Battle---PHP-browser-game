@@ -1,0 +1,73 @@
+.row-header {
+    margin: 0px auto;
+    padding: 0px auto;
+}
+
+.row-content {
+    margin: 0px auto;
+    padding: 20px 0px 20px 0px;
+    border-bottom: 1px ridge;
+    min-height: 400px;
+}
+
+.row-content-about {
+    margin: 0px auto;
+    padding: 20px 0px 20px 0px;
+    min-height: 100px;
+}
+
+.footer {
+    background-color: #778899;
+    margin: 0px auto;
+    padding: 20px 0px  20px 0px;
+}
+
+.jumbotron {
+    
+    margin: 0px auto;
+    background: #363062;
+    color: floralwhite;
+}
+
+.stats {
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.next_button {
+    height: 100px;
+    width: 25%;
+    align-self: center;
+    text-align: justify-all;
+    font-weight: 600;
+    font-size: 30px;
+    border-radius: 100px;
+    background-color: #f9d769;
+    padding: 25px;
+    font-family: sans-serif;
+    color: #363062;
+}
+
+.next_button:hover {
+    background-color: #edb42f;
+}
+
+
+.back_button {
+    height: 50px;
+    width: 25%;
+    align-self: center;
+    text-align: justify-all;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 100px;
+    background-color: #f9d769;
+    padding: 10px;
+    font-family: sans-serif;
+    color: #363062;
+}
+
+.back_button:hover {
+    background-color: #edb42f;
+}
+

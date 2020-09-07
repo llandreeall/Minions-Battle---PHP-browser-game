@@ -1,175 +1,72 @@
 <?php
-
-class Minion
-{
-    public $health = 0;
-    public $strength = 0;
-    public $defense = 0;
-    public $speed = 0;
-    public $luck = 0;
-    public $type = 0;
-    
-    public function constructGoodMinion() {
-        $this->health = rand(70,100);
-        $this->strength = rand(70,80);
-        $this->defense = rand(45,55);
-        $this->speed = rand(40,50);
-        $this->luck = rand(10,30);
-        $this->type = 1;
-        
-        return $this;
-    }
-    
-    public function constructEvilMinion() {
-        $this->health = rand(60,90);
-        $this->strength = rand(60,90);
-        $this->defense = rand(40,60);
-        $this->speed = rand(40,60);
-        $this->luck = rand(25,40);
-        $this->type = 2;
-        
-        return $this;
-    }
-    
-    public function showStats() {
-        echo "Health: ", $this->health, "<br>";
-        echo "Strength: ", $this->strength, "<br>";
-        echo "Defense: ", $this->defense, "<br>";
-        echo "Speed: ", $this->speed, "<br>";
-        echo "Luck: ", $this->luck, "<br>";
-        if ($this->type == 1) {
-            echo "Type: Good Minion <br>";
-        } elseif ($this->type == 2) {
-            echo "Type: Evil Minion <br>";
-        }
-    }
-    
-    //getters
-    public function getHealth(){
-        return $this->health;
-    }
-    public function getStrength(){
-        return $this->strength;
-    }
-    public function getDefense(){
-        return $this->defense;
-    }
-    public function getSpeed(){
-        return $this->speed;
-    }
-    public function getLuck(){
-        return $this->luck;
-    }
-    public function getType(){
-        return $this->type;
-    }
-    
-    //setters    
-    public function setHealth($h){
-        $this->health = $h;
-    }
-    public function setStrength($s){
-        $this->strength = $s;
-    }
-    public function setDefense($d){
-        $this->defense = $d;
-    }
-    public function setSpeed($s){
-        $this->speed = $s;
-    }
-    public function setLuck($l){
-        $this->luck = $l;
-    }
-    public function setType($t){
-        $this->type = $t;
-    }
-}
+include('./gameScript.php');
  
-$tim = new Minion;
-$evil = new Minion;
-
-$tim = $tim->constructGoodMinion();
-$evil = $evil->constructEvilMinion();
- 
-echo "INITIAL STATS<br>";
-echo "TIM<br>" , $tim->showStats(), "<br>"; 
-echo "THE EVIL<br>" , $evil->showStats(), "<br>"; 
-
-$round = 1;
-
-if ($tim->getSpeed() > $evil->getSpeed()) {
-    $attacker = $tim;
-    $defender = $evil;
-} elseif ($tim->getSpeed() > $evil->getSpeed()) {
-    $attacker = $evil;
-    $defender = $tim;
-} else {
-    if ($tim->getLuck() > $evil->getLuck()) {
-        $attacker = $tim;
-        $defender = $evil;
-    } else {
-        $attacker = $evil;
-        $defender = $tim;
-    }
-}
-
-while (($tim->getHealth() > 0 && $evil->getHealth() > 0) && $round <= 20) {
-    echo "<br>ROUND " , $round , "<br>";
-    $damage = $attacker->getStrength() - $defender->getDefense();
-    $chance = rand(1,100);
-    if ($chance < $defender->getLuck() + 1) {
-        echo "Defender got lucky, ATTACK MISSED<br>";
-        $damage = 0;
-    } else {
-        if($attacker->type == 1) {
-            $chance_strike = rand(1,100);
-            if ($chance_strike < 10 + 1) {
-                echo "TIM uses BANANA STRIKE, the damage will double<br>";
-                $damage *= 2;
-            }
-        }
-        if($defender->type == 1) {
-            $chance_shield = rand(1,100);
-            if ($chance_shield < 20 + 1) {
-                echo "TIM uses UMBRELLA SHIELD, the damage will be halved<br>";
-                $damage /= 2;
-            }
-        }
-        $defender->setHealth($defender->getHealth() - $damage);
-    }
-    
-    if ($attacker->getHealth() < 0 )
-        $attacker->setHealth(0);
-    if ($defender->getHealth() < 0 )
-        $defender->setHealth(0);
-    
-    if($attacker->getType() == 1) {
-        echo "The attacker is TIM, the damage dealt is " , $damage , " <br>";
-        $tim = $attacker;
-    } else {
-        echo "The attacker is THE EVIL, the damage dealt is " , $damage , " <br>";
-        $evil = $attacker;
-    }
-    if($defender->getType() == 1) {
-        echo "The defender is TIM, his health is " , $defender->getHealth() , " <br>";
-        $tim = $defender;
-    } else {
-        echo "The defender is THE EVIL, his health is " , $defender->getHealth() , " <br>";
-        $evil = $defender;
-    }
-    
-    $aux = $attacker;
-    $attacker = $defender;
-    $defender = $aux;
-    $round++;
-}
-
-echo "<br>FINAL STATS<br>";
-if ($tim->getHealth() == 0 )
-    echo "THE EVIL HAS WON! TIMM WILL GET HIM NEXT TIME!<br>";
-if ($evil->getHealth() == 0 )
-    echo "TIM HAS WON! CONGRATULATIONS!<br>";
-echo "<br>" , "TIM<br>" ,  $tim->showStats(), "<br>"; 
-echo "THE EVIL<br>" , $evil->showStats(), "<br>"; 
+$timMinion = new Minion;
+$evilMinion = new Minion;
+$evilMinion->setType(2);
 
 ?>
+
+<html lang="en">
+    
+<head>
+    <!-- Required meta tags always come first -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./node_modules/bootstrap-social/bootstrap-social.css">
+        <link rel="stylesheet" href="./stylesheet2.css">
+        <title>Minions Battle</title>
+</head>
+<body style="background-color:#fdd462;">
+    <header class="jumbotron">
+        <div class="container">
+            <div class="row row-header">
+                <div class="col-12 col-sm-3 align-self-center text-center">
+                    <h1>TIM</h1>
+                    <img src="images/tim_icon.png" class="img-fluid">
+                </div>
+                <div class="col-12 col-sm-3 align-self-center stats">
+                    <?php echo $timMinion->showStats(); ?>
+                </div>
+                <div class="col-12 col-sm-3 align-self-center stats text-right">
+                    <?php echo $evilMinion->showStats(); ?>
+                </div>
+                <div class="col-12 col-sm-3 align-self-center text-center">
+                    <h1>EVIL</h1>
+                    <img src="images/evil_icon.png" class="img-fluid">
+                </div>
+            </div> 
+        </div>
+    </header>
+    <div class="container">
+        <div class="row row-content">
+            <div class="col-12 align-items-center text-center">
+                <?php 
+                    $battle = new Battle($timMinion, $evilMinion);
+                    $battle->doBattle();
+                ?>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron">
+        <div class="container align-items-center text-center">
+            <?php $battle->getWinner();?>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container text-center allign-self-center">
+            <br>
+            <span> Copyright @ 2020 <a href="https://www.instagram.com/andreea.n_n/" style="color:floralwhite">Andreea-Cristina Negoita</a>, All Rights Reserved.</span>
+            
+        </div>
+    </footer>
+    <script src="./node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+</body>
+</html>

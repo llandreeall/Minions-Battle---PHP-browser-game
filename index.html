@@ -3,10 +3,56 @@
 <html lang="en">
     
 <head>
+    <!-- Required meta tags always come first -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
     
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./node_modules/bootstrap-social/bootstrap-social.css">
+        <link rel="stylesheet" href="stylesheet.css">
+        <title>Minions Battle</title>
 </head>
-<body>
-    <h1>This is a Header</h1>
+<body style="background-color:#778899;">
+    <div class="container-fluid">
+        <div class="row row-content align-items-center">
+            <div class="col allign-self-center text-center">
+                <img src="images/logo.png" class="img-fluid" id="logo_image" alt="Minions Battle">
+            </div>
+        </div>
+        <div class="row row-content align-items-center">
+            <div class="col-12 col-md-4 allign-self-center text-center">
+                <img src="images/tim.png" class="img-fluid" id="tim_image" alt="Minions Battle TIM">
+            </div>
+            <div class="col-12 col-md text-center align-self-center">
+                <div class="row justify-content-center">
+                    <a role="button" type="button" id="start_button" class="btn btn-lg btn-default btn-block start_button" href="game.php">
+                        START</a>
+                </div>
+                <div class="row justify-content-center">
+                    <a role="button" type="button" id="history_button" class="btn btn-lg btn-default btn-block history_button" href="history.php">
+                        HISTORY</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 allign-self-center text-center">
+                <img src="images/evil2_copy.png" class="img-fluid" id="evil_image" alt="Minions Battle EVIL">
+            </div>
+        </div>
+        
+    </div>
+    <footer class="footer">
+        <div class="container text-center allign-self-center">
+            <br>
+            <span> Copyright @ 2020 <a href="https://www.instagram.com/andreea.n_n/" style="color:floralwhite">Andreea-Cristina Negoita</a>, All Rights Reserved.</span>
+            
+        </div>
+    </footer>
+
+<script src="./node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
 </body>
     
 </html>
